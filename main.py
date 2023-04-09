@@ -9,3 +9,10 @@ def start(message):
                                       '"Преступление и наказание". Начнём!')
 
 bot.polling(none_stop=True)
+
+@bot.message_handler()
+def get_user_text(message):
+    if message.text == 'Начинаем!':
+        bot.send_message(message.chat.id, "Раскольников стоял перед дверью старухи-процентщицы.")
+    else:
+        bot.send_message(message.chat.id, "Извините, но я вас не понимаю.")
