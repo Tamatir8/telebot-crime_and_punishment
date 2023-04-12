@@ -23,13 +23,23 @@ def get_user_text(message):
         markup.add(btn1, btn2)
         bot.send_message(message.chat.id, text='От вас зависит жизнь этой женщины. Что же вы сделаете?',reply_markup=markup)
     elif (message.text == "Убить"):
-        bot.send_message(message.chat.id, "Раскольников, весь в крови, смотрел, как из головы старухи тексла кровь. "
+        bot.send_message(message.chat.id, "Раскольников, весь в крови, смотрел, как из головы старухи текла кровь. "
                                               "Посмотрев пару секунд, он побежал и начал искать вещи.")
 
     elif message.text == "Не убить":
         bot.send_message(message.chat.id, "Раскольников спрятал топор и быстро вышел из квартиры. Он не смог, "
                                           "он слишком слаб!")
-
+        markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn3 = types.KeyboardButton("Передумал")
+        btn4 = types.KeyboardButton("Не передумал")
+        markup1.add(btn3, btn4)
+        bot.send_message(message.chat.id, text='Вы уверены?',reply_markup=markup1)
+        if message.text == "Передумал":
+            bot.send_message(message.chat.id, "Раскольников, весь в крови, смотрел, как из головы старухи текла кровь. "
+                                              "Посмотрев пару секунд, он побежал и начал искать вещи.")
+        elif message.text == "Не передумал":
+            bot.send_message(message.chat.id, "Раскольников спрятал топор и быстро вышел из квартиры. Он не смог, "
+                                          "он слишком слаб!")
 
 
 bot.polling(none_stop=True)
