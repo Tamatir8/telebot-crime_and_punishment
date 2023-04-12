@@ -8,7 +8,10 @@ def start(message):
     bot.send_message(message.chat.id, 'Приветствую, дорогой любитель русской классики! В данном чате ты можешь сыграть в '
                                       'визуальную новеллу, основанную по произведению Фёдора Михайловича Достоевского '
                                       '"Преступление и наказание". Начнём!')
-    bot.send_message(message.chat.id,'Напиши "Начинаем!"')
+    markup0 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    btn0 = types.KeyboardButton("Передумал")
+    markup0.add(btn0)
+    bot.send_message(message.chat.id, text='Нажми. чтобы начать', reply_markup=markup0)
 
 @bot.message_handler()
 def get_user_text(message):
@@ -34,11 +37,11 @@ def get_user_text(message):
         btn4 = types.KeyboardButton("Не передумал")
         markup1.add(btn3, btn4)
         bot.send_message(message.chat.id, text='Вы уверены?',reply_markup=markup1)
-        if message.text == "Передумал":
-            bot.send_message(message.chat.id, "Раскольников, весь в крови, смотрел, как из головы старухи текла кровь. "
+    elif message.text == "Передумал":
+        bot.send_message(message.chat.id, "Раскольников, весь в крови, смотрел, как из головы старухи текла кровь. "
                                               "Посмотрев пару секунд, он побежал и начал искать вещи.")
-        elif message.text == "Не передумал":
-            bot.send_message(message.chat.id, "Раскольников спрятал топор и быстро вышел из квартиры. Он не смог, "
+    elif message.text == "Не передумал":
+        bot.send_message(message.chat.id, "Раскольников спрятал топор и быстро вышел из квартиры. Он не смог, "
                                           "он слишком слаб!")
 
 
