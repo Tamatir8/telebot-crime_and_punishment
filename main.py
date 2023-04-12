@@ -9,7 +9,7 @@ def start(message):
                                       'визуальную новеллу, основанную по произведению Фёдора Михайловича Достоевского '
                                       '"Преступление и наказание". Начнём!')
     markup0 = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    btn0 = types.KeyboardButton("Передумал")
+    btn0 = types.KeyboardButton("Начинаем!")
     markup0.add(btn0)
     bot.send_message(message.chat.id, text='Нажми. чтобы начать', reply_markup=markup0)
 
@@ -43,6 +43,8 @@ def get_user_text(message):
     elif message.text == "Не передумал":
         bot.send_message(message.chat.id, "Раскольников спрятал топор и быстро вышел из квартиры. Он не смог, "
                                           "он слишком слаб!")
+        bot.send_message(message.chat.id, "Он вернулся в свою комнату и лег на порванный старый диван. Потом умер!")
+        bot.send_message(message.chat.id, "Вот его могила. Концовка: 'Вы мёртвая тварь дрожащая!'")
 
 
 bot.polling(none_stop=True)
