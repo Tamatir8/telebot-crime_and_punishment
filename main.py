@@ -7,7 +7,8 @@ bot = telebot.TeleBot('5457853365:AAGEz8Yp8LPfQOO3_ATHC2pQoadAxhIgyo0')
 def start(message):
     bot.send_message(message.chat.id, 'Приветствую, дорогой любитель русской классики! В данном чате ты можешь сыграть в '
                                       'визуальную новеллу, основанную по произведению Фёдора Михайловича Достоевского '
-                                      '"Преступление и наказание". Начнём!')
+                                      '"Преступление и наказание". В ней вы играете за главного героя романа, Родиона '
+                                      'Романовича Раскольникова. Начнём! Как же пойдёт ваша история?')
     markup0 = types.ReplyKeyboardMarkup(resize_keyboard=True)
     btn0 = types.KeyboardButton("Начинаем!")
     markup0.add(btn0)
@@ -23,14 +24,38 @@ def get_user_text(message):
         bot.send_message(message.chat.id, "Ваша рука лежит на спрятанном топоре и остался всего один шаг, и вы точно "
                                           "узнаете, можете ли называть себя человеком «необыкновенным».")
 
+        #стоит перед дверью в самом начале
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btn1 = types.KeyboardButton("Да")
         btn2 = types.KeyboardButton("Нет")
         markup.add(btn1, btn2)
         bot.send_message(message.chat.id, text='Но готовы ли вы к этому шагу?',reply_markup=markup)
+
+        #сразу решает убить старуху
     elif (message.text == "Да"):
-        bot.send_message(message.chat.id, "Раскольников, весь в крови, смотрел, как из головы старухи текла кровь. "
+        bot.send_message(message.chat.id, "Молодой человек постучался и попросил старуху пустить его. Он отдал ей ложный "
+                                          "злад и когда она отвернулась достал топор. Он взмахнул и ударил свою жертву. "
+                                          "Раскольников, весь в крови, смотрел, как из головы старухи текла кровь. "
                                               "Посмотрев пару секунд, он побежал и начал искать вещи.")
+        bot.send_message(message.chat.id, "Неожиданно он слышит, как открывается входная дверь. Лизавета, сестра"
+                                          " этой женщины от шока не может ничего сказать и испуганными глазами смотрит "
+                                          "на Раскольникова.")
+
+        #убить или не убить Лизавету
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn1 = types.KeyboardButton("Убить Лизавету")
+        btn2 = types.KeyboardButton("Не убить Лизавету")
+        markup.add(btn1, btn2)
+        bot.send_message(message.chat.id, text='Никто не должен узнать, что это вы убили старуху-процентщицу.'
+                                               ' Вам нужно избавиться от свидетелей.', reply_markup=markup)
+    elif (message.text == "Убить Лизавету"):
+        bot.send_message(message.chat.id, "Паника Раскольникова. Забрал вещи и сбежал. и т.д.")
+
+        #концовка Вы тварь дрожащая
+    elif (message.text == "Не убить Лизавету"):
+        bot.send_message(message.chat.id, "Раскольников не смог. Он бросил топор на землю и опустился на землю. "
+                                          "Лизавета медленно отступила и убежала. Через пару минут вернулась с дворником.")
+        bot.send_message(message.chat.id, "Потом суд и каторга. Концовка: Вы тварь дрожащая!")
 
     elif message.text == "Нет":
         bot.send_message(message.chat.id, "Вы поднимаете руку, но в последний момент отдёргиваете её от двери. Что-то "
@@ -43,9 +68,13 @@ def get_user_text(message):
         btn4 = types.KeyboardButton("Не стучать")
         markup1.add(btn3, btn4)
         bot.send_message(message.chat.id, text='Обратного пути нет будет. Стучать или не стучать?',reply_markup=markup1)
+
+        # решает идти ли на убийство старухи
     elif message.text == "Стучать":
         bot.send_message(message.chat.id, "Раскольников, весь в крови, смотрел, как из головы старухи текла кровь. "
                                               "Посмотрев пару секунд, он побежал и начал искать вещи.")
+
+        #концовка "Вы мёртвая тварь дрожащая!"
     elif message.text == "Не стучать":
         bot.send_message(message.chat.id, "… и несётесь прочь, подальше от комнаты старухи-процентщицы. Вы не понимаете,"
                                           " какая неведомая сила заставила вас передумать. Может, это страх? Или совесть? "
@@ -72,6 +101,8 @@ def get_user_text(message):
                                           " продолжаете и продолжаете смотреть на своё отражение, наклоняясь всё ниже, "
                                           "пока полностью не сливаетесь с ним.")
         bot.send_message(message.chat.id, "Концовка: «Вы мёртвая тварь дрожащая!»")
+        file = open('мёртвая тварь дрожащая.jpg', 'rb')
+        bot.send_photo(message.chat.id, file, "«Вы мёртвая тварь дрожащая!»")
 
         markupsecr = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btnsecr = types.KeyboardButton("...")
@@ -80,6 +111,4 @@ def get_user_text(message):
     elif message.text == "...":
         bot.send_message(message.chat.id, "БУЛЬ БУЛЬ КАРАСИКИ, ВОТ И КОНЕЦ ЭТОЙ ДИВНОЙ ИСТОРИИ")
 
-
-
-bot.polling(none_stop=True)
+#
