@@ -148,8 +148,13 @@ def get_user_text(message):
                                           " не повинную птицу?» Вам не нравится, что сомнения в вашей необыкновенности "
                                           "продолжают прокрадываться к вам в голову, и вы решаете проверить вашу теорию снова."
                                           " И снова. И снова…")
-        file = open('who.jpg', 'rb')
+        file = open('кто же ты.png', 'rb')
         bot.send_photo(message.chat.id, file, "Концовка: Кто же ты?")
+
+        markupsecr = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btnsecr = types.KeyboardButton("/start")
+        markupsecr.add(btnsecr)
+        bot.send_message(message.chat.id, text='Начать заново', reply_markup=markupsecr)
 
         #концовка Вы Наполеон!
     elif (message.text == "Вмешаться"):
@@ -169,8 +174,13 @@ def get_user_text(message):
                                           " не способны на убийство, в отличие от меня.» Вы резко выпрямляетесь и понимаете:"
                                           " вот ваше предназначение – лишать существ мучений, наказывать обидчиков, свершать "
                                           "правосудие. Одним словом – менять мир к лучшему, неважно, каким именно способом.")
-        file = open('napol.jpg', 'rb')
+        file = open('вы наполеон.png', 'rb')
         bot.send_photo(message.chat.id, file, "Концовка: Кто же ты?")
+
+        markupsecr = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btnsecr = types.KeyboardButton("/start")
+        markupsecr.add(btnsecr)
+        bot.send_message(message.chat.id, text='Начать заново', reply_markup=markupsecr)
 
         #концовка Вы Наполеон без прав!
     elif (message.text == "Не вмешиваться"):
@@ -178,9 +188,13 @@ def get_user_text(message):
                                           "не ваше дело. И что отныне вы не будете вмешиваться в события этой жизни. "
                                           "Вместо этого вам будет легче просто плыть по течению в полной уверенности, "
                                           "что вы – сверхчеловек.")
-        file = open('liv.jpg', 'rb')
+        file = open('спокойно ред.png', 'rb')
         bot.send_photo(message.chat.id, file, "Концовка: Вы Наполеон без прав!")
 
+        markupsecr = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btnsecr = types.KeyboardButton("/start")
+        markupsecr.add(btnsecr)
+        bot.send_message(message.chat.id, text='Начать заново', reply_markup=markupsecr)
 
         #концовка Вы тварь дрожащая
     elif (message.text == "Не убить Лизавету"):
@@ -248,7 +262,7 @@ def get_user_text(message):
                                           "обыкновенных людей, и вам становится уже невыносимо от этой мысли, но вы всё"
                                           " продолжаете и продолжаете смотреть на своё отражение, наклоняясь всё ниже, "
                                           "пока полностью не сливаетесь с ним.")
-        file = open('dead1.jpg', 'rb')
+        file = open('мёртвая тварь дрожащая.jpg', 'rb')
         bot.send_photo(message.chat.id, file, "Концовка: «Вы мёртвая тварь дрожащая!»")
 
         markupsecr = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -258,4 +272,5 @@ def get_user_text(message):
 
 
 bot.polling(none_stop=True)
+
 
